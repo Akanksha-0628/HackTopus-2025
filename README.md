@@ -1,6 +1,6 @@
 # 🌍 Disaster Relief System – Smart Emergency Response 🚀  
 
-![Disaster Relief System](https://source.unsplash.com/random/1200x400?disaster,relief,aid)  
+![Disaster Relief System](https://github.com/Akanksha-0628/HackTropica/blob/main/Icon.png)  
 
 **Disaster Relief System** is an AI-powered emergency response platform designed to provide real-time assistance during natural disasters. It helps in disaster prediction, resource allocation, rescue coordination, and relief management to minimize human loss and infrastructure damage.  
 
