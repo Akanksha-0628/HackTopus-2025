@@ -1,0 +1,37 @@
+import { useState } from "react";
+import { loadStripe } from "@stripe/stripe-js";
+
+const stripePromise = loadStripe("your_publishable_key_here");
+
+function PaymentPage() {
+    const [amount, setAmount] = useState(0);
+
+    const handlePayment = async () => {
+        const response = await fetch("http://localhost:5000/create-payment-intent", {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify({ amount: amount * 100, currency: "usd" }),
+        });
+
+        const { clientSecret } = await response.json();
+        const stripe = await stripePromise;
+
+        const { error } = await stripe.redirectToCheckout({
+            sessionId: clientSecret,
+        });
+
+        if (error) {
+            console.error(error);
+        }
+    };
+
+    return (
+        <div>
+            <h2>Pay Now</h2>
+            <input type="number" value={amount} onChange={(e) => setAmount(e.target.value)} />
+            <button onClick={handlePayment}>Pay</button>
+        </div>
+    );
+}
+
+export default PaymentPage;
